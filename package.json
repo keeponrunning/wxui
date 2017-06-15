@@ -1,0 +1,41 @@
+{
+  "name": "wxui",
+  "version": "0.1.0",
+  "description": "weex ui components",
+  "main": "index.js",
+  "scripts": {
+    "dev:native": "webpack --watch --config build/webpack.config.native.js",
+    "clean": "rm -vrf dist/*",
+    "serve": "serve -p 4040"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keeponrunning/keeponrunning.github.io.git"
+  },
+  "keywords": [
+    "weex"
+  ],
+  "author": "keeponrunning",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/keeponrunning/keeponrunning.github.io/issues"
+  },
+  "homepage": "https://github.com/keeponrunning/keeponrunning.github.io#readme",
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "css-loader": "^0.28.1",
+    "serve": "^5.1.5",
+    "uglify-js": "^3.0.4",
+    "vue-loader": "^12.0.3",
+    "webpack": "^2.5.1",
+    "weex-loader": "^0.4.4",
+    "weex-vue-loader": "^0.2.12"
+  },
+  "dependencies": {
+    "weex-html5": "^0.4.1",
+    "weex-vue-render": "0.11.10"
+  }
+}

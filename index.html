@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WXUI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <script src="./assets/qrcode.js"></script>
+  <style type="text/css">
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+    .body {
+      text-align: center;
+    }
+  </style>
+</head>
+<body class="body">
+  <h1>使用 weex palyground 扫一扫</h1>
+  <div>
+    <canvas id="native_canvas" width="200" height="200"></canvas>
+  </div>
+  <a href="" id="native_a"></a>
+</body>
+</html>
+<script type="text/javascript">
+  var url = location.href + 'dist/native/index.js';
+  var qrcodedraw = new QRCodeLib.QRCodeDraw();
+  qrcodedraw.draw(document.getElementById('native_canvas'), url, function () {});
+
+  var native_a = document.getElementById('native_a');
+  native_a.href = url;
+  native_a.innerText = url;
+</script>

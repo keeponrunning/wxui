@@ -1,0 +1,13 @@
+echo "================== Welcome to use wxui =================="
+
+#!/bin/bash
+# called by native
+THIS_DIR=$(dirname "$0")
+pushd "$THIS_DIR"
+
+npm run clean
+npm run serve &
+npm run dev:native
+
+
+popd

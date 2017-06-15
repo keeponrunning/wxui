@@ -1,0 +1,1 @@
+export default source => `http://192.180.2.55:4040/assets/${source}`;

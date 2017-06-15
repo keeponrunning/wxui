@@ -11,3 +11,15 @@ weex ui components.
 5. **down [playground](https://weex.apache.org/cn/playground.html)**
 6. open http://yourIP:4040
 7. scan
+
+# Components
+
+* ActionSheet
+* Backdrop
+* Button
+* Checkbox
+* List
+* Tabbar
+* Menu
+* Slider
+* Wrapper

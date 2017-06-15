@@ -10,7 +10,6 @@
       <wx-list-item title="Menu" :to="baseUrl('menu')"></wx-list-item>
       <wx-list-item title="Sliders" :to="baseUrl('sliders')"></wx-list-item>
       <wx-list-item title="Wrappers" :to="baseUrl('wrappers')"></wx-list-item>
-      <text>{{bundleUrl}}</text>
     </wx-list>
   </scroller>
 </template>
@@ -22,38 +21,18 @@
 </style>
 
 <script>
-  import source from './helpers/source';
-
   export default {
     components: {
       wxList: require('wxui/wx-list.vue'),
       wxListItem: require('wxui/wx-list-item.vue'),
     },
-    data() {
-      return {
-        bundleUrl: ''
-      }
-    },
-    computed: {
-      icon() {
-        return source('icon.png');
-      },
-      avatar() {
-        return source('avatar.jpg')
-      },
-      thumbnail() {
-        return source('thumbnail.jpeg')
-      }
-    },
+
     methods: {
       baseUrl(name) {
         const bundleUrl = this.$getConfig().bundleUrl;
         const ip = bundleUrl.match(/\d+.\d+.\d+.\d+:\d+/g)[0];
         return `http://${ip}/dist/native/${name}.js`;
       }
-    },
-    created() {
-
     }
   };
 </script>

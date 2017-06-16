@@ -1,6 +1,6 @@
 <template>
   <div class="body" :style="{ visibility: VISIBLE }">
-    <wx-backdrop :cancel="cancel" :time="time" ref="drop" @change="onbackdrop"></wx-backdrop>
+    <wx-backdrop :cancel="cancel" :duration="duration" ref="drop" @change="onbackdrop"></wx-backdrop>
     <div ref="main" class="main" :style="{ bottom: - BOTTOM }" @click="onprevent">
       <div class="title">
         <text class="title-txt">{{title}}</text>
@@ -76,7 +76,7 @@
     props: {
       title: { default: '' }, // 标题
       buttons: { default: [] }, // 按钮
-      time: { default: 200 }, // 动画时长
+      duration: { default: 200 }, // 动画时长
       cancel: { default: true } // 点击背景是否取消
     },
 
@@ -130,7 +130,7 @@
           styles: {
             transform: 'translate(0px, ' + translateY + 'px)',
           },
-          duration: this.time, //ms
+          duration: this.duration, //ms
           timingFunction: 'ease',
           delay: 0 //ms
         }, callback);

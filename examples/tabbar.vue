@@ -1,10 +1,10 @@
 <template>
   <div class="body">
     <wx-tabbar
-      :tab-items="tabItems"
-      :selected-index="selectedIndex"
-      :selected-color="options.selectedColor"
-      :unselected-color="options.unselectedColor"
+      :tabItems="tabItems"
+      :selectedIndex="selectedIndex"
+      :selectedColor="options.selectedColor"
+      :unselectedColor="options.unselectedColor"
       :pattern="options.pattern"
     ></wx-tabbar>
   </div>

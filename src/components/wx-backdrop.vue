@@ -10,7 +10,7 @@
     props: {
       cancel: { default: true },
       opacity: { default: '0.4' },
-      time: { default: 300 },
+      duration: { default: 300 },
     },
     data() {
       return {
@@ -43,7 +43,7 @@
       _anim(styles, fn, callback = () => {}) {
         animation.transition(this.$refs.backdrop, {
           styles: styles,
-          duration: this.time,
+          duration: this.duration,
           timingFunction: fn,
           delay: 0
         }, callback);

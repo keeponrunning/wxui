@@ -89,8 +89,8 @@
 
 <script>
   export default {
-    page: require('./components/page.vue'),
     components: {
+      page: require('./components/page.vue'),
       wxButton: require('wxui/wx-button.vue')
     },
     computed: {

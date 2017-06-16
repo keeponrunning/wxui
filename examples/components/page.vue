@@ -84,7 +84,6 @@
         this.navBarHeight = 64.0 * 750.0 / deviceWidth;
       } else {
         this.navBarHeight = 88;
-        statusbar.color('#000000');
       }
     }
   }

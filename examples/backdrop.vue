@@ -1,9 +1,9 @@
 <template>
-  <div class="body">
+  <page title="wx-backdrop">
     <wx-button class="btn" text="open cancel=true" @click="onclick(true)"></wx-button>
     <wx-button class="btn" color="danger" text="open cancel=false" @click="onclick(false)"></wx-button>
     <wx-backdrop :cancel="cancel" ref="backdrop" @change="onchange"></wx-backdrop>
-  </div>
+  </page>
 </template>
 
 <script>
@@ -11,6 +11,7 @@
 
   export default {
     components: {
+      page: require('./components/page.vue'),
       wxButton: require('wxui/wx-button.vue'),
       wxBackdrop: require('wxui/wx-backdrop.vue')
     },
@@ -28,7 +29,7 @@
       },
 
       onchange(e) {
-        modal.toast({ message: 'callback：' + e.value });
+        // modal.toast({ message: 'callback：' + e.value });
       }
     }
   }
@@ -37,5 +38,13 @@
 <style>
   .btn {
     margin-top: 50px;
+  }
+  .xxxx {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-color: rgba(0,0,0,0.7);
   }
 </style>

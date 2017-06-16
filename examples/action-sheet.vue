@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <page title="wx-action-sheet">
     <wx-button class="btn" text="open cancel=true" @click="onclick(true)"></wx-button>
     <wx-button class="btn" color="danger" text="open cancel=false" @click="onclick(false)"></wx-button>
     <!-- 组件位于所有可见内容之后 -->
@@ -10,7 +10,7 @@
       :buttons="buttons"
       @handler="handler"
     ></wx-action-sheet>
-  </div>
+  </page>
 </template>
 
 <style>
@@ -24,6 +24,7 @@
 
   export default {
     components: {
+      page: require('./components/page.vue'),
       wxButton: require('wxui/wx-button.vue'),
       wxActionSheet: require('wxui/wx-action-sheet.vue'),
     },

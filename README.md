@@ -2,6 +2,10 @@
 
 weex ui components.
 
+# Preview
+
+![Demo](https://github.com/keeponrunning/wxui/blob/master/assets/wxui.gif)
+
 # Run
 
 1. `$ git clone`
@@ -19,7 +23,8 @@ weex ui components.
 * Button
 * Checkbox
 * List
-* Tabbar
+* Marquee
 * Menu
 * Slider
+* Tabbar
 * Wrapper

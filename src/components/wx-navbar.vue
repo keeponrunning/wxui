@@ -8,26 +8,26 @@
       naviItemPosition="right"
       :style="{ color: rightItemColor }"
       class="right-text"
-      v-on:click="onclickrightitem">{{rightItemTitle}}</text>
+      @click="onclickrightitem">{{rightItemTitle}}</text>
     <image
       v-if="rightItemSrc"
       naviItemPosition="right"
       :src="rightItemSrc"
       class="right-image"
-      v-on:click="onclickrightitem"
+      @click="onclickrightitem"
       resize="cover"></image>
     <text
       v-if="!leftItemSrc"
       naviItemPosition="left"
       :style="{ color: leftItemColor }"
       class="left-text"
-      v-on:click="onclickleftitem">{{leftItemTitle}}</text>
+      @click="onclickleftitem">{{leftItemTitle}}</text>
     <image
       v-if="leftItemSrc"
       naviItemPosition="left"
       :src="leftItemSrc"
       :class="['left-image', type]"
-      v-on:click="onclickleftitem"
+      @click="onclickleftitem"
       resize="cover"></image>
     <text
       naviItemPosition="center"

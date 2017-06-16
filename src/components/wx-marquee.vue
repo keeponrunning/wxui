@@ -1,8 +1,9 @@
 <template>
-  <div class="body" :style="{ height: height }">
-    <div ref="marquee" class="marquee">
-      <text v-for="(txt, key) in list" :key="key" :style="STYLES">{{txt}}</text>
-      <text :style="STYLES">{{list[0]}}</text>
+  <div class="body" :style="{ height: height, backgroundColor: background }">
+    <div ref="marquee" class="marquee" :style="{ flexDirection: DIRECTION, width: LIST.length * 750 }">
+      <div class="txt" :style="{ height: height }" v-for="(txt, key) in LIST" :key="key">
+        <text :style="{ fontSize: size, color: color }">{{txt}}</text>
+      </div>
     </div>
   </div>
 </template>
@@ -11,8 +12,14 @@
   .body { 
     overflow: hidden;
   }
-  .marquee{
-    flex-direction: column;
+  .marquee {
+    /*flex-direction: column;*/
+    /*flex-direction: row;*/
+    overflow: hidden;
+  }
+  .txt {
+    width: 750px;
+    justify-content: center;
   }
 </style>
 
@@ -21,32 +28,37 @@
 
   export default {
     props: {
-      fontSize: { default: 28 },
+      size: { default: 28 },
       color: { default: 'black' },
+      background: { default: 'white' },
       height: { default: 50 },
       duration: { default: 1000 },
       interval: { default: 3000 },
+      direction: { default: 'vertical' }, // vertical(垂直) horizontal(水平)
       list: { default: [] },
-      index: { default: 0 }
     },
 
     data() {
       return {
-        STYLES: {
-          color: this.color,
-          fontSize: this.fontSize,
-          lineHeight: this.height
-        },
+        DIRECTION: this.direction === 'vertical' ? 'row' : 'column',
+        INTERVAL: this.interval < 10 ? 10 : this.interval,
+        INDEX: 0,
+        LIST: this.list.concat(this.list[0]),
         TIMER: '',
-        INDEX: 0
       }
     },
 
     methods: {
-      _anim(translateY, duration, callback = () => {}){
+      _anim(translate, duration, callback = () => {}){
+        let translateX = '0px', translateY = '0px';
+        if (this.direction === 'vertical') {
+          translateX = translate;
+        } else if (this.direction === 'horizontal') {
+          translateY = translate;
+        };
         animation.transition(this.$refs.marquee, {
           styles: {
-            transform: `translate(0px, ${translateY})`,
+            transform: `translate(${translateX}, ${translateY})`,
           },
           timingFunction: 'ease-out',
           duration: duration
@@ -54,25 +66,22 @@
       },
 
       move() {
-        const length = this.list.length + 1;
+        const length = this.LIST.length;
         let step = 100 / length;
 
         this.TIMER = setInterval(() => {
           if (this.INDEX < length - 1) {
-            this._anim(-step * (this.INDEX + 1) + '%', this.duration);
+            const translateY = -step * (this.INDEX + 1);
+            this._anim(`${translateY}%`, this.duration);
             this.INDEX++;
           } else {
             this._anim('0px', 1, () => {
-              setTimeout(() => this._anim(-step + '%', this.duration));
+              setTimeout(() => this._anim(`${-step}%`, this.duration), 0);
               this.INDEX = 1;
             })
           }
-        }, this.interval);
+        }, this.INTERVAL + this.duration);
       }
-    },
-
-    created() {
-      this.INDEX = this.index;
     },
 
     mounted() {

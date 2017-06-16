@@ -1,18 +1,17 @@
 <template>
-  <scroller class="body">
+  <page title="wx-slider">
     <wx-slider :slider="slider"></wx-slider>
-  </scroller>
+  </page>
 </template>
 
 <style>
-  .body {
-    padding-top: 50px;
-  }
+
 </style>
 
 <script>
   export default {
     components: {
+      page: require('./components/page.vue'),
       wxSlider: require('wxui/wx-slider.vue')
     },
 

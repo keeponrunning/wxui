@@ -18,15 +18,13 @@
       wxButton: require('wxui/wx-button.vue'),
       wxMenu: require('wxui/wx-menu.vue'),
     },
+
     methods: {
       onclick(status) {
         const emit = status ? 'show' : 'hide';
         this.$refs.menu.$emit(emit);
       }
-    },
-    created() {
-
-    },
+    }
   }
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-  <scroller class="container">
+  <page title="WXUI" type="clear">
     <wx-list title="Components">
       <wx-list-item title="ActionSheet" :to="baseUrl('action-sheet')"></wx-list-item>
       <wx-list-item title="Backdrop" :to="baseUrl('backdrop')"></wx-list-item>
@@ -12,7 +12,7 @@
       <wx-list-item title="Tabbar" :to="baseUrl('tabbar')"></wx-list-item>
       <wx-list-item title="Wrappers" :to="baseUrl('wrappers')"></wx-list-item>
     </wx-list>
-  </scroller>
+  </page>
 </template>
 
 <style>
@@ -24,6 +24,7 @@
 <script>
   export default {
     components: {
+      page: require('./components/page.vue'),
       wxList: require('wxui/wx-list.vue'),
       wxListItem: require('wxui/wx-list-item.vue'),
     },

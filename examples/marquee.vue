@@ -1,19 +1,20 @@
 <template>
-  <scroller>
-    <wx-marquee :list="list" color="green"></wx-marquee>
-    <wx-marquee :list="list" color="#EE2C2C" :duration="1000" :interval="1"></wx-marquee>
+  <page title="wx-marquee">
+    <wx-marquee :list="list" color="green" :duration="1000" :interval="1000"></wx-marquee>
+    <wx-marquee :list="list" color="#EE2C2C" :duration="1000" :interval="0"></wx-marquee>
     <wx-marquee :list="list" color="white" background="#EE9A00" :size="50" :height="100"></wx-marquee>
 
-    <wx-marquee :list="list" color="green" direction="horizontal"></wx-marquee>
-    <wx-marquee :list="list" color="#EE2C2C" :duration="1000" :interval="1" direction="horizontal"></wx-marquee>
+    <wx-marquee :list="list" color="green" :duration="2000" :interval="1000" direction="horizontal"></wx-marquee>
+    <wx-marquee :list="list" color="#EE2C2C" :duration="1000" :interval="0" direction="horizontal"></wx-marquee>
     <wx-marquee :list="list" color="white" background="#EE9A00" :size="50" :height="100" direction="horizontal"></wx-marquee>
-  </scroller>
+  </page>
 </template>
 
 <script>
 
   export default {
     components: {
+      page: require('./components/page.vue'),
       wxMarquee: require('wxui/wx-marquee.vue'),
     },
 

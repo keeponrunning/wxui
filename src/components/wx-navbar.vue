@@ -119,11 +119,13 @@
       //扩展样式
       type: { default: 'default' }
     },
+
     methods: {
-      onclickrightitem: function (e) {
+      onclickrightitem(e) {
         this.$emit('naviBarRightItemClick');
       },
-      onclickleftitem: function (e) {
+
+      onclickleftitem(e) {
         this.$emit('naviBarLeftItemClick');
       }
     }

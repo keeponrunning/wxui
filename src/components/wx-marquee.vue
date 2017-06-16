@@ -13,8 +13,6 @@
     overflow: hidden;
   }
   .marquee {
-    /*flex-direction: column;*/
-    /*flex-direction: row;*/
     overflow: hidden;
   }
   .txt {

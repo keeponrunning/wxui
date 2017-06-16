@@ -1,6 +1,6 @@
 <template>
-  <scroller class="container">
-    <!-- <wx-page title="lists"> -->
+  <page title="wx-list">
+    <scroller>
       <wx-list title="No icons">
         <wx-list-item title="default"></wx-list-item>
         <wx-list-item title="noArrow" :noArrow="true" titleColor="#488AFF"></wx-list-item>
@@ -51,20 +51,18 @@
         <wx-list-item title="badge" :thumbnail="thumbnail" :badge="9"></wx-list-item>
         <wx-list-item title="note badge" :thumbnail="thumbnail" :badge="33" note="Note"></wx-list-item>
       </wx-list>
-    <!-- </wx-page> -->
-  </scroller>
+    </scroller>
+  </page>
 </template>
 
 <style>
-  .container {
-    background-color: #f2f2f5;
-  }
+
 </style>
 
 <script>
   export default {
     components: {
-      // wxPage: require('wxui/wx-page.vue'),
+      page: require('./components/page.vue'),
       wxList: require('wxui/wx-list.vue'),
       wxListItem: require('wxui/wx-list-item.vue')
     },

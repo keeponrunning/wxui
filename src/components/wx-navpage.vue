@@ -39,6 +39,7 @@
     components: {
       wxNavbar: require('./wx-navbar.vue')
     },
+
     props: {
       dataRole: { default: 'navbar' },
       backgroundColor: { default: 'black' },
@@ -53,11 +54,13 @@
       leftItemColor: { default: 'black' },
       type: { default: 'default' }
     },
+
     methods: {
-      naviBarRightItemClick: function (e) {
+      naviBarRightItemClick(e) {
         this.$emit('naviBarRightItemClick', e)
       },
-      naviBarLeftItemClick: function (e) {
+
+      naviBarLeftItemClick(e) {
         this.$emit('naviBarLeftItemClick', e)
       }
     }

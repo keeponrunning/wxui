@@ -1,18 +1,16 @@
 <template>
-  <div class="body">
+  <page title="wx-wrapper">
     <wx-wrapper :wrap="wrap"></wx-wrapper>
-  </div>
+  </page>
 </template>
 
 <style>
-  .body {
-    padding-top: 50px;
-  }
 </style>
 
 <script>
   export default {
     components: {
+      page: require('./components/page.vue'),
       wxWrapper: require('wxui/wx-wrapper.vue')
     },
 

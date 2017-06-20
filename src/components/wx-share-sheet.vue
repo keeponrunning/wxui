@@ -5,7 +5,7 @@
       <div class="title">
         <text class="title-txt">{{title}}</text>
       </div>
-      <div v-for="(items, key) in cards">
+      <div v-for="(items, key) in cards" :key="key">
         <scroller class="scroller" scroll-direction="horizontal" show-scrollbar="false">
           <div class="panel" v-for="(item, key) in items" :key="key" @click="onclick(item.handler, $event)">
             <image class="item-icon" :src="item.icon"></image>
@@ -17,7 +17,7 @@
       <wx-button
         v-if="cancel"
         class="cancel"
-        @click="onclick('cancel', $event)"
+        @click="onclick(CANCEL, $event)"
         text="取消"
         :clear="true"
         :full="true"
@@ -113,37 +113,40 @@
         VISIBLE: 'hidden',
         BOTTOM: 0,
         EMIT: 'handler',
-        EMIT_VALUE: {}
+        OUTPUT: {},
+        CANCEL: 'cancel'
       }
     },
 
     methods: {
-      onprevent() {}, // 处理 android click
+      onprevent() {}, // android click
 
       onbackdrop(e) {
-        e.value === 'closing' && this.close();
+        if (!this.OUTPUT.handler) this.OUTPUT.handler = this.CANCEL; // hack handle type
+        e.value === 'closing' && this._close();
       },
 
       onclick(handler, $event) {
-        this.EMIT_VALUE.handler = handler;
+        this.OUTPUT.handler = handler;
         this.$refs.drop.$emit('hide');
       },
 
-      open() {
+      _open() {
         this._dom(() => {
           this.VISIBLE = 'visible';
           this._anim(-this.BOTTOM);
         });
       },
 
-      close() {
+      _close() {
         this._anim(0, () => {
           this.VISIBLE = 'hidden';
-          this.$emit(this.EMIT, this.EMIT_VALUE);
+          this.$emit(this.EMIT, this.OUTPUT);
+          this.OUTPUT = {}; // reset
         });
       },
 
-      // 获取dom
+      // get DOM
       _dom(callback = () => {}) {
         if (this.BOTTOM) return callback()
         dom.getComponentRect(this.$refs.main, option => {
@@ -152,7 +155,7 @@
         });
       },
 
-      // 动画
+      // animate
       _anim(translateY, callback = () => {}) {
         animation.transition(this.$refs.main, {
           styles: {
@@ -165,15 +168,17 @@
       }
     },
 
+    // add listener
     created() {
       this.$nextTick(() => {
         this.$on('show',() => {
           this.$refs.drop.$emit('show');
-          this.open();
+          this._open();
         });
       });
     },
 
+    // try get DOM
     mounted() {
       setTimeout(() => this._dom(), 50);
     }

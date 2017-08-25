@@ -25,6 +25,7 @@ weex ui components.
 * List
 * Marquee
 * Menu
+* ShareSheet
 * Slider
 * Tabbar
 * Wrapper
